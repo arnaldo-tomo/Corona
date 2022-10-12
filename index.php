@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags -->e
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Moçmbique- Corona</title>
@@ -435,21 +435,11 @@
                 <!-- container-scroller -->
                 <!-- base:js -->
                 <script src="vendors/base/vendor.bundle.base.js">
-                    < /scrip> <!--endinject-- >
 
-                    <
-                    script src = "custom.js" >
-                        <
-                        /> <
-                        script src = "popper.min.js" >
                 </script>
-                <!-- Plugin js for this page-->
-                <!-- End plugin js for this page-->
-                <!-- inject:js -->
+
                 <script src="js/template.js"></script>
-                <!-- endinject -->
-                <!-- plugin js for this page -->
-                <!-- End plugin js for this page -->
+
                 <script src="vendors/chart.js/Chart.min.js"></script>
                 <script src="vendors/progressbar.js/progressbar.min.js"></script>
                 <script src="vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
@@ -461,7 +451,7 @@
                 <script src="js/time.js"></script>
                 <!-- End custom js for this page-->
 
-                <!-- DataTables  & Plugins -->
+
                 <script src="datatables/jquery.dataTables.min.js"></script>
                 <script src="datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
                 <script src="datatables-responsive/js/dataTables.responsive.min.js"></script>

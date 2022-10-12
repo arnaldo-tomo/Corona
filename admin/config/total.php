@@ -1,18 +1,18 @@
 <?php
 session_start();
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'niassa' FROM `niassa");
+$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'niassa' FROM `niassa LIMIT 1");
 $obitoNiassa = mysqli_fetch_array($consulta);
 
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'niassa' FROM `niassa");
+$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'niassa' FROM `niassa LIMIT 1 ");
 $PossesetivoNiassa = mysqli_fetch_array($consulta);
 
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'niassa' FROM `niassa");
+$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'niassa' FROM `niassa LIMIT 1 ");
 $QuarentenaNiassa = mysqli_fetch_array($consulta);
 
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'niassa' FROM `niassa");
+$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'niassa' FROM `niassa LIMIT 1");
 $NegativoNiassa = mysqli_fetch_array($consulta);
 
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'niassa' FROM `niassa");
+$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'niassa' FROM `niassa LIMIT 1");
 $RecuperadoNiassa = mysqli_fetch_array($consulta);
 
 $consulta = mysqli_query($conexao, "SELECT Atualizado AS 'niassa' FROM `niassa` ORDER by Atualizado DESC LIMIT 1");
@@ -208,8 +208,7 @@ $consulta = mysqli_query($conexao, "SELECT Atualizado AS 'ciademaputo1' FROM `ci
 $datacidade = mysqli_fetch_array($consulta);
 
 // total de  Testado
-$Totaltestado = $PossesetivoNiassa['niassa'] + $NegativoNiassa['niassa'] + $Possesetivcabodelgado['cabodelgado'] + $Negativocabodelgado['cabodelgado']
-    + $Possesetivonampula['nampula1'] + $Negativonampula['nampula1'] + $Possesetivotete['tete1'] + $Negativotete['tete1'] + $Possesetivozambezia['zambezia1'] + $Negativozambezia['zambezia1'] +
+$Totaltestado = $PossesetivoNiassa['niassa'] + $NegativoNiassa['niassa'] + $Possesetivcabodelgado['cabodelgado'] + $Negativocabodelgado['cabodelgado'] + $Possesetivonampula['nampula1'] + $Negativonampula['nampula1'] + $Possesetivotete['tete1'] + $Negativotete['tete1'] + $Possesetivozambezia['zambezia1'] + $Negativozambezia['zambezia1'] +
     $Possesetivomanica['manica1'] + $Negativomanica['manica1'] + $Possesetivobeira['total'] + $Negativobeira['total'] + $Possesetivogaza['gaza1'] + $Negativogaza['gaza1'] +
     $Possesetivoprovincia['provincia1'] + $Negativoprovincia['provincia1'] + $Possesetivoinhambane['totalidade1'] + $Negativoinhambane['totalidade1'] + $Possesetivocidade['ciademaputo1'] + $Negativocidade['ciademaputo1'];
 // total de Obito
