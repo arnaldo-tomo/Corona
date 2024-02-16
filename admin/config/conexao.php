@@ -1,5 +1,5 @@
 <?php
-$Servidor = "127.0.0.1";
+$Servidor = "localhost";
 $Usuario = "root";
 $Senha = "";
 $Basededao = "covid";
