@@ -26,14 +26,14 @@
 
 <body onload="relogio()">
     <script>
-        setTimeout(function() {
-            $.ajax({
-                url: "/getnewdata",
-                cache: false,
-            }).done(function(html) {
-                $('#data-container ).html(html);
-                });)
-        }, 5000);
+    setTimeout(function() {
+        $.ajax({
+            url: "/getnewdata",
+            cache: false,
+        }).done(function(html) {
+            $('#data-container ).html(html);
+            });)
+    }, 5000);
     </script>
     <div class="horizontal-menu">
         <nav class="bottom-navbar">
@@ -116,7 +116,8 @@
                                 </div>
                                 <form method="POST" action="covid19pdf.php">
                                     <div class="pe-1 mb-3 mb-xl-0">
-                                        <button type="submit" name="PDF" class="btn btn-outline-inverse-info btn-icon-text">
+                                        <button type="submit" name="PDF"
+                                            class="btn btn-outline-inverse-info btn-icon-text">
                                             Arquivo PDF
                                             <i class="mdi mdi-file-pdf btn-icon-append"></i>
                                         </button>
@@ -134,7 +135,8 @@
                                     <div class="card sale-visit-statistics-border">
                                         <div class="card-body text-black">
                                             <h4 class="card-title mb-2">Recuperados</h4>
-                                            <h2 class="font-weight-bold mb-3"><i class="mdi mdi-emoticon-happy "></i><?= number_format($Totalrecuperado) ?>
+                                            <h2 class="font-weight-bold mb-3"><i
+                                                    class="mdi mdi-emoticon-happy "></i><?= number_format($Totalrecuperado) ?>
 
                                             </h2>
 
@@ -152,11 +154,13 @@
                                     <div class="card sale-visit-statistics-border">
                                         <div class="card-body">
                                             <h4 class="card-title mb-2">Posetivos</h4>
-                                            <h2 class="text-dark mb-2 font-weight-bold mb-3"><i class="mdi mdi-account-plus "></i><?= number_format($Totalpossetivo) ?>
+                                            <h2 class="text-dark mb-2 font-weight-bold mb-3"><i
+                                                    class="mdi mdi-account-plus "></i><?= number_format($Totalpossetivo) ?>
                                             </h2>
                                             <hr>
                                             <h5 class="card-title mb-2">Em Quarentena</h5>
-                                            <h2 class="text-dark mb-2 font-weight-bold mb-3"><i class="mdi mdi-home"></i><?= number_format($Totalquarentena) ?></h2>
+                                            <h2 class="text-dark mb-2 font-weight-bold mb-3"><i
+                                                    class="mdi mdi-home"></i><?= number_format($Totalquarentena) ?></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -165,11 +169,13 @@
                                     <div class="card sale-visit-statistics-border">
                                         <div class="card-body">
                                             <h4 class="card-title mb-2">Obitos</h4>
-                                            <h2 class="text-dark mb-2 font-weight-bold mb-3"><i class="mdi mdi-emoticon-sad "></i><?= number_format($Totalobito) ?>
+                                            <h2 class="text-dark mb-2 font-weight-bold mb-3"><i
+                                                    class="mdi mdi-emoticon-sad "></i><?= number_format($Totalobito) ?>
                                             </h2>
                                             <hr>
                                             <h4 class="card-title mb-2">Testados</h4>
-                                            <h2 class="text-dark mb-2 font-weight-bold mb-3"><i class="mdi mdi-test-tube "></i><?= number_format($Totaltestado) ?>
+                                            <h2 class="text-dark mb-2 font-weight-bold mb-3"><i
+                                                    class="mdi mdi-test-tube "></i><?= number_format($Totaltestado) ?>
                                             </h2>
                                         </div>
                                     </div>
@@ -215,20 +221,21 @@
                                         <tbody>
                                             <tr>
                                                 <td>Niassa</td>
-                                                <td><?php echo number_format($PossesetivoNiassa['niassa'] + $NegativoNiassa['niassa']); ?>
+                                                <td><?php echo number_format($PossesetivoNiassa + $NegativoNiassa); ?>
                                                 </td>
-                                                <td><?php echo $RecuperadoNiassa['niassa']; ?></td>
-                                                <td><?php echo $NegativoNiassa['niassa']; ?></td>
-                                                <td><?php echo $PossesetivoNiassa['niassa']; ?></td>
-                                                <td><?php echo $QuarentenaNiassa['niassa']; ?></td>
-                                                <td><?php echo $obitoNiassa['niassa']; ?></td>
-                                                <td><?php echo $DataNiassa['niassa']; ?></td>
+                                                <td><?php echo $RecuperadoNiassa; ?></td>
+                                                <td><?php echo $NegativoNiassa; ?></td>
+                                                <td><?php echo $PossesetivoNiassa; ?></td>
+                                                <td><?php echo $QuarentenaNiassa; ?></td>
+                                                <td><?php echo $obitoNiassa; ?></td>
+                                                <td><?php echo $DataNiassa; ?></td>
                                             </tr>
+
                                             <tr>
                                                 <td>Cabo Delgado</td>
-                                                <td><?php echo $Possesetivcabodelgado['cabodelgado'] + $Negativocabodelgado['cabodelgado']; ?>
+                                                <td><?php echo  number_format($Possesetivcabodelgado + $Negativocabodelgado); ?>
                                                 </td>
-                                                <td><?php echo $Recuperadocabodelgado['cabodelgado']; ?></td>
+                                                <td><?php echo $Recuperadocabodelgado; ?></td>
                                                 <td><?php echo $Negativocabodelgado['cabodelgado']; ?></td>
                                                 <td><?php echo $Possesetivcabodelgado['cabodelgado']; ?></td>
                                                 <td><?php echo $Quarentenacabodelgado['cabodelgado']; ?></td>
@@ -377,10 +384,18 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="progress progress-lg grouped mb-2">
-                                                        <div class="progress-bar  bg-danger" role="progressbar" style="width: <?= $Totalobito ?>%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?= $Totalquarentena ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        <div class="progress-bar bg-warning" role="progressbar" style="width: <?= $Totalnegativo ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        <div class="progress-bar bg-success" role="progressbar" style="width: <?= $Totalpossetivo ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar  bg-danger" role="progressbar"
+                                                            style="width: <?= $Totalobito ?>%" aria-valuenow="100"
+                                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: <?= $Totalquarentena ?>%" aria-valuenow="50"
+                                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-warning" role="progressbar"
+                                                            style="width: <?= $Totalnegativo ?>%" aria-valuenow="50"
+                                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-success" role="progressbar"
+                                                            style="width: <?= $Totalpossetivo ?>%" aria-valuenow="50"
+                                                            aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
@@ -424,7 +439,8 @@
                                 <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright ©
                                     2020 -
                                     <?php $ano = date('Y');
-                                    echo $ano; ?> <a href="http://arnaldotomo.epizy.com/" target="_blank">http://arnaldotomo.epizy.com </a> </span>
+                                    echo $ano; ?> <a href="http://arnaldotomo.epizy.com/"
+                                        target="_blank">http://arnaldotomo.epizy.com </a> </span>
                                 <!-- <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Podes
                                     reutiliar os
                                     codigos desse projeto para quais quer fins </a> templates</span>-->
@@ -468,23 +484,23 @@
                 <!-- End custom js for this page-->
 
                 <script>
-                    $(function() {
-                        $("#example1").DataTable({
-                            "responsive": true,
-                            "lengthChange": false,
-                            "autoWidth": false,
-                            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                        $('#example2').DataTable({
-                            "paging": true,
-                            "lengthChange": false,
-                            "searching": false,
-                            "ordering": true,
-                            "info": true,
-                            "autoWidth": false,
-                            "responsive": true,
-                        });
+                $(function() {
+                    $("#example1").DataTable({
+                        "responsive": true,
+                        "lengthChange": false,
+                        "autoWidth": false,
+                        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                    $('#example2').DataTable({
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": false,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "responsive": true,
                     });
+                });
                 </script>
 </body>
 
