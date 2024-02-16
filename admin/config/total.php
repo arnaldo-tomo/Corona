@@ -1,22 +1,25 @@
 <?php
 session_start();
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'niassa' FROM `niassa LIMIT 1");
-$obitoNiassa = mysqli_fetch_array($consulta);
 
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'niassa' FROM `niassa LIMIT 1 ");
-$PossesetivoNiassa = mysqli_fetch_array($consulta);
+function obterResultado($conexao, $consultaSQL, $nomeCampo) {
+    $result = mysqli_query($conexao, $consultaSQL);
 
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'niassa' FROM `niassa LIMIT 1 ");
-$QuarentenaNiassa = mysqli_fetch_array($consulta);
+    if (!$result) {
+        die("Erro na consulta: " . mysqli_error($conexao));
+    }
 
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'niassa' FROM `niassa LIMIT 1");
-$NegativoNiassa = mysqli_fetch_array($consulta);
+    $dados = mysqli_fetch_assoc($result);
 
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'niassa' FROM `niassa LIMIT 1");
-$RecuperadoNiassa = mysqli_fetch_array($consulta);
+    return isset($dados[$nomeCampo]) ? $dados[$nomeCampo] : null;
+}
 
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'niassa' FROM `niassa` ORDER by Atualizado DESC LIMIT 1");
-$DataNiassa = mysqli_fetch_array($consulta);
+// Exemplo de uso para Niassa
+$obitoNiassa = obterResultado($conexao, "SELECT SUM(Obito) AS total FROM niassa", 'total');
+$PossesetivoNiassa = obterResultado($conexao, "SELECT SUM(Possesetivo) AS total FROM niassa", 'total');
+$QuarentenaNiassa = obterResultado($conexao, "SELECT SUM(Quarentena) AS total FROM niassa", 'total');
+$NegativoNiassa = obterResultado($conexao, "SELECT SUM(Negativo) AS total FROM niassa", 'total');
+$RecuperadoNiassa = obterResultado($conexao, "SELECT SUM(Recuperado) AS total FROM niassa", 'total');
+$DataNiassa = obterResultado($conexao, "SELECT Atualizado FROM niassa ORDER by Atualizado DESC LIMIT 1", 'Atualizado');
 
 // Cabo delegado
 $consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'cabodelgado' FROM `cabodelgado ");
