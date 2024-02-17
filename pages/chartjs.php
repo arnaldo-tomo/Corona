@@ -208,16 +208,13 @@
 <!-- Custom js for this page-->
 <script src="../js/dashboard.js"></script>
 <!-- End custom js for this page-->
-<script src="../../vendors/base/vendor.bundle.base.js">
-script src = "../js/template.js" >
-</script>
-<!-- endinject -->
-<!-- plugin js for this page -->
+<script src="../../vendors/base/vendor.bundle.base.js"></script>
+<script src="../js/template.js"> </script>
 <script src="..../vendors/chart.js/Chart.min.js"></script>
 <!-- End plugin js for this page -->
 <!-- Custom js for this page-->
 <?php
-include "../admin/config/total.php";
+require_once("../admin/config/total.php");
 
 $valor = array('')
 ?>
