@@ -71,13 +71,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/tabales.php" class="nav-link">
-                            <i class="mdi mdi-grid menu-icon"></i>
-                            <span class="menu-title">Tabelas</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                     </li>
                     <li class="nav-item">
                     </li>
@@ -97,7 +90,8 @@
                                 <div>
                                     <h6 class="text-dark font-weight-bold mb-2">COVID19</h6>
                                     <h2 class="text-dark font-weight-bold mb-8">Painel Coronavírus</h2>
-                                    <h6 class="font-weight-bold mb-4">Atualizado em: <span id="text"></span> Horas
+                                    <h6 class="font-weight-bold mb-4">Atualizado em: <span id="text"></span> (GMT+2)
+                                        Horas em Moçambique
                                     </h6>
                                 </div>
 
