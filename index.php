@@ -25,15 +25,27 @@
 
 <body onload="relogio()">
     <script>
-    setTimeout(function() {
-        $.ajax({
-            url: "/getnewdata",
-            cache: false,
-        }).done(function(html) {
-            $('#data-container ).html(html);
-            }))
-    }, 5000);
+    // Utilizando uma função autoexecutável para evitar conflitos com outras bibliotecas
+    (function($) {
+        // Função para atualizar os dados
+        function atualizarDados() {
+            $.ajax({
+                url: "/getnewdata",
+                cache: false,
+            }).done(function(html) {
+                $('#data-container').html(html);
+            });
+        }
+
+        // Iniciar a atualização automática após o carregamento da página
+        $(document).ready(function() {
+            // Utilizando setInterval em vez de setTimeout para atualizar a cada 5 segundos
+            setInterval(atualizarDados, 5000);
+        });
+
+    })(jQuery); // Certifique-se de que o jQuery está corretamente carregado
     </script>
+
     <div class="horizontal-menu">
         <nav class="bottom-navbar">
             <div class="container">
