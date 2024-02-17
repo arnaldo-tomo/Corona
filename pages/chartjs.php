@@ -76,7 +76,9 @@
                                 <div>
                                     <h6 class="text-dark font-weight-bold mb-2">COVID19</h6>
                                     <h2 class="text-dark font-weight-bold mb-8">Painel Coronavírus</h2>
-                                    <h6 class="font-weight-normal mb-2">Atualizado em: 08/02/2022 17:40</h6>
+                                    <h6 class="font-weight-normal mb-2">Atualizado em: <span id="hora-atual"></span>
+                                        (GMT+2) Horas em Moçambique
+                                    </h6>
                                 </div>
 
                                 <div class="ms-lg-5 d-lg-flex d-none">
@@ -213,6 +215,35 @@
 <script src="..../vendors/chart.js/Chart.min.js"></script>
 <!-- End plugin js for this page -->
 <!-- Custom js for this page-->
+
+<script>
+function atualizarHora() {
+    // Criar um objeto de data
+    var data = new Date();
+
+    // Obter componentes de hora, minutos e segundos
+    var horas = data.getHours();
+    var minutos = data.getMinutes();
+    var segundos = data.getSeconds();
+
+    // Formatando para exibição (adicionando zero à esquerda, se necessário)
+    horas = (horas < 10) ? '0' + horas : horas;
+    minutos = (minutos < 10) ? '0' + minutos : minutos;
+    segundos = (segundos < 10) ? '0' + segundos : segundos;
+
+    // Construir a string da hora
+    var horaAtual = horas + ':' + minutos + ':' + segundos;
+
+    // Atualizar o conteúdo do elemento HTML
+    document.getElementById('hora-atual').innerHTML = horaAtual;
+}
+
+// Chamar a função inicialmente para exibir a hora imediatamente
+atualizarHora();
+
+// Chamar a função a cada segundo usando setInterval
+setInterval(atualizarHora, 1000);
+</script>
 <?php
 require_once("../admin/config/total.php");
 
