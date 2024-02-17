@@ -1,8 +1,9 @@
 <?php
-session_start();
+    session_start();
 
-function obterResultado($conexao, $consultaSQL, $nomeCampo) {
-    $result = mysqli_query($conexao, $consultaSQL);
+    if (!function_exists('obterResultado')) {
+     function obterResultado($conexao, $consultaSQL, $nomeCampo) {
+        $result = mysqli_query($conexao, $consultaSQL);
 
     if (!$result) {
         die("Erro na consulta: " . mysqli_error($conexao));
@@ -11,8 +12,8 @@ function obterResultado($conexao, $consultaSQL, $nomeCampo) {
     $dados = mysqli_fetch_assoc($result);
 
     return isset($dados[$nomeCampo]) ? $dados[$nomeCampo] : null;
+    }
 }
-
 // Exemplo de uso para Niassa
 $obitoNiassa = obterResultado($conexao, "SELECT SUM(Obito) AS total FROM niassa", 'total');
 $PossesetivoNiassa = obterResultado($conexao, "SELECT SUM(Possesetivo) AS total FROM niassa", 'total');
@@ -21,211 +22,102 @@ $NegativoNiassa = obterResultado($conexao, "SELECT SUM(Negativo) AS total FROM n
 $RecuperadoNiassa = obterResultado($conexao, "SELECT SUM(Recuperado) AS total FROM niassa", 'total');
 $DataNiassa = obterResultado($conexao, "SELECT Atualizado FROM niassa ORDER by Atualizado DESC LIMIT 1", 'Atualizado');
 
+
 // Cabo delegado
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'cabodelgado' FROM `cabodelgado ");
-$obitocabodelgado = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'cabodelgado' FROM `cabodelgado ");
-$Possesetivcabodelgado = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'cabodelgado' FROM `cabodelgado ");
-$Quarentenacabodelgado = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'cabodelgado' FROM `cabodelgado ");
-$Negativocabodelgado = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'cabodelgado' FROM `cabodelgado ");
-$Recuperadocabodelgado = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'cabodelgado' FROM `cabodelgado` ORDER by Atualizado DESC LIMIT 1");
-$Datacabodelgado = mysqli_fetch_array($consulta);
+$obitocabodelgado = obterResultado($conexao, "SELECT SUM(Obito) AS total  FROM cabodelgado",'total');
+$Possesetivcabodelgado = obterResultado($conexao, "SELECT SUM(Possesetivo) AS total FROM cabodelgado",'total');
+$Quarentenacabodelgado = obterResultado($conexao, "SELECT SUM(Quarentena) AS total FROM cabodelgado",'total');
+$Negativocabodelgado = obterResultado($conexao, "SELECT SUM(Negativo) AS total FROM cabodelgado",'total');
+$Recuperadocabodelgado = obterResultado($conexao, "SELECT SUM(Recuperado) AS total FROM cabodelgado",'total');
+$Datacabodelgado = obterResultado($conexao, "SELECT Atualizado  FROM cabodelgado ORDER by Atualizado DESC LIMIT 1",'Atualizado');
 
 // Nampula
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'nampula1' FROM `nampula ");
-$Obitonampula = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'nampula1' FROM `nampula ");
-$Possesetivonampula = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'nampula1' FROM `nampula ");
-$Quarentenanampula = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'nampula1' FROM `nampula ");
-$Negativonampula = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'nampula1' FROM `nampula ");
-$Recuperadonampula = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'nampula1' FROM `nampula` ORDER by Atualizado DESC LIMIT 1");
-$Datanampula = mysqli_fetch_array($consulta);
+$Obitonampula = obterResultado($conexao, "SELECT SUM(Obito) AS total FROM nampula",'total');
+$Possesetivonampula = obterResultado($conexao, "SELECT SUM(Possesetivo) AS total FROM nampula",'total');
+$Quarentenanampula = obterResultado($conexao, "SELECT SUM(Quarentena) AS total FROM nampula",'total');
+$Negativonampula = obterResultado($conexao, "SELECT SUM(Negativo) AS total FROM nampula",'total');
+$Recuperadonampula = obterResultado($conexao, "SELECT SUM(Recuperado) AS total FROM nampula",'total');
+$Datanampula = obterResultado($conexao, "SELECT Atualizado FROM nampula ORDER by Atualizado DESC LIMIT 1",'Atualizado');
 
 // tete
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'tete1' FROM `tete ");
-$obitotete = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'tete1' FROM `tete ");
-$Possesetivotete = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'tete1' FROM `tete ");
-$Quarentenatete = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'tete1' FROM `tete ");
-$Negativotete = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'tete1' FROM `tete ");
-$Recuperadotete = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'tete1' FROM `tete` ORDER by Atualizado DESC LIMIT 1");
-$datatete = mysqli_fetch_array($consulta);
+$obitotete = obterResultado($conexao, "SELECT SUM(Obito) AS total FROM tete",'total');
+$Possesetivotete = obterResultado($conexao, "SELECT SUM(Possesetivo) AS total FROM tete",'total');
+$Quarentenatete = obterResultado($conexao, "SELECT SUM(Quarentena) AS total FROM tete",'total');
+$Negativotete = obterResultado($conexao, "SELECT SUM(Negativo) AS total FROM tete",'total');
+$Recuperadotete = obterResultado($conexao, "SELECT SUM(Recuperado) AS total FROM tete",'total');
+$datatete = obterResultado($conexao, "SELECT Atualizado FROM tete ORDER by Atualizado DESC LIMIT 1",'Atualizado');
 
 // Zambezia
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'zambezia1' FROM `zambezia ");
-$obitozambezia = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'zambezia1' FROM `zambezia ");
-$Possesetivozambezia = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'zambezia1' FROM `zambezia ");
-$Quarentenazambezia = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'zambezia1' FROM `zambezia ");
-$Negativozambezia = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'zambezia1' FROM `zambezia ");
-$Recuperadozambezia = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'data' FROM `zambezia` ORDER by Atualizado DESC LIMIT 1");
-$datazambezia = mysqli_fetch_array($consulta);
+$obitozambezia = obterResultado($conexao, "SELECT SUM(Obito) AS total FROM zambezia",'total');
+$Possesetivozambezia = obterResultado($conexao, "SELECT SUM(Possesetivo) AS total FROM zambezia",'total');
+$Quarentenazambezia = obterResultado($conexao, "SELECT SUM(Quarentena) AS total FROM zambezia",'total');
+$Negativozambezia = obterResultado($conexao, "SELECT SUM(Negativo) AS total FROM zambezia",'total');
+$Recuperadozambezia = obterResultado($conexao, "SELECT SUM(Recuperado) AS total FROM zambezia",'total');
+$datazambezia = obterResultado($conexao, "SELECT Atualizado AS 'data' FROM zambezia ORDER by Atualizado DESC LIMIT 1",'data');
 
 // Manica
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'manica1' FROM `manica ");
-$obitomanica = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'manica1' FROM `manica ");
-$Possesetivomanica = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'manica1' FROM `manica ");
-$Quarentenamanica = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'manica1' FROM `manica ");
-$Negativomanica = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'manica1' FROM `manica ");
-$Recuperadomanica = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'manica1' FROM `manica` ORDER by Atualizado DESC LIMIT 1");
-$datamanica = mysqli_fetch_array($consulta);
+$obitomanica = obterResultado($conexao, "SELECT SUM(Obito) AS total FROM manica",'total');
+$Possesetivomanica = obterResultado($conexao, "SELECT SUM(Possesetivo) AS total FROM manica",'total');
+$Quarentenamanica = obterResultado($conexao, "SELECT SUM(Quarentena) AS total FROM manica",'total');
+$Negativomanica = obterResultado($conexao, "SELECT SUM(Negativo) AS total FROM manica",'total');
+$Recuperadomanica = obterResultado($conexao, "SELECT SUM(Recuperado) AS total FROM manica",'total');
+$datamanica = obterResultado($conexao, "SELECT Atualizado AS total FROM manica ORDER by Atualizado DESC LIMIT 1",'total');
 
 //   Sofala
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'total' FROM `beira ");
-$obitobeira = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'total' FROM `beira ");
-$Possesetivobeira = mysqli_fetch_array($consulta);
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'total' FROM `beira ");
-$Quarentenabeira = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'total' FROM `beira ");
-$Negativobeira = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'total' FROM `beira ");
-$Recuperadobeira = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'dado' FROM `beira` ORDER by Atualizado DESC LIMIT 1");
-$databeira = mysqli_fetch_array($consulta);
+$obitobeira = obterResultado($conexao, "SELECT SUM(Obito) AS total FROM beira",'total');
+$Possesetivobeira = obterResultado($conexao, "SELECT SUM(Possesetivo) AS total FROM beira",'total');
+$Quarentenabeira = obterResultado($conexao, "SELECT SUM(Quarentena) AS total FROM beira",'total');
+$Negativobeira = obterResultado($conexao, "SELECT SUM(Negativo) AS total FROM beira",'total');
+$Recuperadobeira = obterResultado($conexao, "SELECT SUM(Recuperado) AS total FROM beira",'total');
+$databeira = obterResultado($conexao, "SELECT Atualizado AS dado FROM beira ORDER by Atualizado DESC LIMIT 1",'dado');
 
 // Inhambane
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'totalidade1' FROM `inhambane");
-$obitoinhambane = mysqli_fetch_array($consulta);
+$obitoinhambane = obterResultado($conexao, "SELECT SUM(Obito) AS i FROM inhambane",'i');
+$Possesetivoinhambane = obterResultado($conexao, "SELECT SUM(Possesetivo) AS i FROM inhambane",'i');
+$Quarentenainhambane = obterResultado($conexao, "SELECT SUM(Quarentena) AS i FROM inhambane",'i');
+$Negativoinhambane = obterResultado($conexao, "SELECT SUM(Negativo) AS i FROM inhambane",'i');
+$Recuperadoinhambane = obterResultado($conexao, "SELECT SUM(Recuperado) AS i FROM inhambane",'i');
+$datainhambane = obterResultado($conexao, "SELECT Atualizado AS i FROM inhambane ORDER by Atualizado DESC LIMIT 1",'i');
 
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'totalidade1' FROM `inhambane");
-$Possesetivoinhambane = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'totalidade1' FROM `inhambane");
-$Quarentenainhambane = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'totalidade1' FROM `inhambane");
-$Negativoinhambane = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'totalidade1' FROM `inhambane");
-$Recuperadoinhambane = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'totalidade1' FROM `inhambane` ORDER by Atualizado DESC LIMIT 1");
-$datainhambane = mysqli_fetch_array($consulta);
-
-// gaza
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'gaza1' FROM `gaza ");
-$obitogaza = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'gaza1' FROM `gaza ");
-$Possesetivogaza = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'gaza1' FROM `gaza ");
-$Quarentenagaza = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'gaza1' FROM `gaza ");
-$Negativogaza = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'gaza1' FROM `gaza ");
-$Recuperadogaza = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'gaza1' FROM `gaza` ORDER by Atualizado DESC LIMIT 1");
-$datagaza = mysqli_fetch_array($consulta);
+// Gaza
+$obitogaza = obterResultado($conexao, "SELECT SUM(Obito) AS gaza1 FROM gaza ",'gaza1');
+$Possesetivogaza = obterResultado($conexao, "SELECT SUM(Possesetivo) AS gaza1 FROM gaza ",'gaza1');
+$Quarentenagaza = obterResultado($conexao, "SELECT SUM(Quarentena) AS gaza1 FROM gaza ",'gaza1');
+$Negativogaza = obterResultado($conexao, "SELECT SUM(Negativo) AS gaza1 FROM gaza ",'gaza1');
+$Recuperadogaza = obterResultado($conexao, "SELECT SUM(Recuperado) AS gaza1 FROM gaza ",'gaza1');
+$datagaza = obterResultado($conexao, "SELECT Atualizado AS gaza1 FROM gaza ORDER by Atualizado DESC LIMIT 1",'gaza1');
 
 // Povincia maputo
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'provincia1' FROM `provinciamaputo ");
-$obitoprovincia = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'provincia1' FROM `provinciamaputo ");
-$Possesetivoprovincia = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'provincia1' FROM `provinciamaputo ");
-$Quarentenaprovincia = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'provincia1' FROM `provinciamaputo ");
-$Negativoprovincia = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'provincia1' FROM `provinciamaputo ");
-$Recuperadoprovincia = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'provincia1' FROM `provinciamaputo` ORDER by Atualizado DESC LIMIT 1");
-$dataprovincia = mysqli_fetch_array($consulta);
+$obitoprovincia = obterResultado($conexao, "SELECT SUM(Obito) AS provincia1 FROM provinciamaputo",'provincia1');
+$Possesetivoprovincia = obterResultado($conexao, "SELECT SUM(Possesetivo) AS provincia1 FROM provinciamaputo",'provincia1');
+$Quarentenaprovincia = obterResultado($conexao, "SELECT SUM(Quarentena) AS provincia1 FROM provinciamaputo",'provincia1');
+$Negativoprovincia = obterResultado($conexao, "SELECT SUM(Negativo) AS provincia1 FROM provinciamaputo",'provincia1');
+$Recuperadoprovincia = obterResultado($conexao, "SELECT SUM(Recuperado) AS provincia1 FROM provinciamaputo",'provincia1');
+$dataprovincia = obterResultado($conexao, "SELECT Atualizado AS provincia1 FROM provinciamaputo ORDER by Atualizado DESC LIMIT 1",'provincia1');
 
 // cidade de maputo
-$consulta = mysqli_query($conexao, "SELECT SUM(Obito) AS 'ciademaputo1' FROM `cidademaputo ");
-$obitocidade = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Possesetivo) AS 'ciademaputo1' FROM `cidademaputo ");
-$Possesetivocidade = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Quarentena) AS 'ciademaputo1' FROM `cidademaputo ");
-$Quarentenacidade = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Negativo) AS 'ciademaputo1' FROM `cidademaputo ");
-$Negativocidade = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT SUM(Recuperado) AS 'ciademaputo1' FROM `cidademaputo ");
-$Recuperadocidade = mysqli_fetch_array($consulta);
-
-$consulta = mysqli_query($conexao, "SELECT Atualizado AS 'ciademaputo1' FROM `cidademaputo` ORDER by Atualizado DESC LIMIT 1");
-$datacidade = mysqli_fetch_array($consulta);
-
+$obitocidade = obterResultado($conexao, "SELECT SUM(Obito) AS ciademaputo1 FROM cidademaputo",'ciademaputo1');
+$Possesetivocidade = obterResultado($conexao, "SELECT SUM(Possesetivo) AS ciademaputo1 FROM cidademaputo",'ciademaputo1');
+$Quarentenacidade = obterResultado($conexao, "SELECT SUM(Quarentena) AS ciademaputo1 FROM cidademaputo",'ciademaputo1');
+$Negativocidade = obterResultado($conexao, "SELECT SUM(Negativo) AS ciademaputo1 FROM cidademaputo",'ciademaputo1');
+$Recuperadocidade = obterResultado($conexao, "SELECT SUM(Recuperado) AS ciademaputo1 FROM cidademaputo",'ciademaputo1');
+$datacidade = obterResultado($conexao, "SELECT Atualizado AS ciademaputo1 FROM cidademaputo ORDER by Atualizado DESC LIMIT 1",'ciademaputo1');
 // total de  Testado
-$Totaltestado = $PossesetivoNiassa['niassa'] + $NegativoNiassa['niassa'] + $Possesetivcabodelgado['cabodelgado'] + $Negativocabodelgado['cabodelgado'] + $Possesetivonampula['nampula1'] + $Negativonampula['nampula1'] + $Possesetivotete['tete1'] + $Negativotete['tete1'] + $Possesetivozambezia['zambezia1'] + $Negativozambezia['zambezia1'] +
-    $Possesetivomanica['manica1'] + $Negativomanica['manica1'] + $Possesetivobeira['total'] + $Negativobeira['total'] + $Possesetivogaza['gaza1'] + $Negativogaza['gaza1'] +
-    $Possesetivoprovincia['provincia1'] + $Negativoprovincia['provincia1'] + $Possesetivoinhambane['totalidade1'] + $Negativoinhambane['totalidade1'] + $Possesetivocidade['ciademaputo1'] + $Negativocidade['ciademaputo1'];
+    $Totaltestado = $PossesetivoNiassa + $NegativoNiassa + $Possesetivcabodelgado + $Negativocabodelgado + $Possesetivonampula + $Negativonampula + $Possesetivotete + $Negativotete + $Possesetivozambezia + $Negativozambezia +
+    $Possesetivomanica + $Negativomanica + $Possesetivomanica + $Possesetivobeira + $Negativobeira + $Possesetivogaza + $Negativogaza +
+    $Possesetivoprovincia+ $Negativoprovincia+ $Possesetivoinhambane + $Negativoinhambane + $Possesetivocidade + $Negativocidade;
 // total de Obito
-$Totalobito = $obitoNiassa['niassa'] + $obitocabodelgado['cabodelgado'] + $Obitonampula['nampula1'] + $obitotete['tete1'] + $obitozambezia['zambezia1'] + $obitomanica['manica1'] +
-    $obitobeira['total'] + $obitogaza['gaza1'] + $obitoprovincia['provincia1'] + $obitoinhambane['totalidade1'] + $obitocidade['ciademaputo1'];
+    $Totalobito = $obitoNiassa + $obitocabodelgado + $Obitonampula + $obitotete + $obitozambezia + $obitomanica +$Possesetivomanica;
+    $obitobeira + $obitogaza + $obitoprovincia+ $obitoinhambane + $obitocidade;
 // total de Quarentena
-$Totalquarentena = $QuarentenaNiassa['niassa'] + $Quarentenacabodelgado['cabodelgado'] + $Quarentenanampula['nampula1'] + $Quarentenatete['tete1'] + $Quarentenazambezia['zambezia1'] +
-    $Quarentenamanica['manica1'] + $Quarentenabeira['total'] + $Quarentenagaza['gaza1'] + $Quarentenaprovincia['provincia1'] + $Quarentenainhambane['totalidade1'] + $Quarentenacidade['ciademaputo1'];
+    $Totalquarentena = $QuarentenaNiassa + $Quarentenacabodelgado + $Quarentenanampula + $Quarentenatete + $Quarentenazambezia +
+    $Quarentenamanica +$Possesetivomanica + $Quarentenabeira + $Quarentenagaza + $Quarentenaprovincia+ $Quarentenainhambane + $Quarentenacidade;
 // Total de Negativo
-$Totalnegativo = $NegativoNiassa['niassa'] + $Negativocabodelgado['cabodelgado'] + $Negativonampula['nampula1'] + $Negativotete['tete1'] + $Negativozambezia['zambezia1'] +
-    $Negativomanica['manica1'] + $Negativobeira['total'] + $Negativogaza['gaza1'] + $Negativoprovincia['provincia1'] + $Negativoinhambane['totalidade1'] + $Negativocidade['ciademaputo1'];
+    $Totalnegativo = $NegativoNiassa + $Negativocabodelgado + $Negativonampula + $Negativotete + $Negativozambezia +
+    $Negativomanica +$Possesetivomanica + $Negativobeira + $Negativogaza + $Negativoprovincia+ $Negativoinhambane + $Negativocidade;
 // Total de Recuperado
-$Totalrecuperado = $RecuperadoNiassa['niassa'] + $Recuperadocabodelgado['cabodelgado'] + $Recuperadonampula['nampula1'] + $Recuperadotete['tete1'] + $Recuperadozambezia['zambezia1'] +
-    $Recuperadomanica['manica1'] + $Recuperadobeira['total'] + $Recuperadogaza['gaza1'] + $Recuperadoprovincia['provincia1'] + $Recuperadoinhambane['totalidade1'] + $Recuperadocidade['ciademaputo1'];
+    $Totalrecuperado = $RecuperadoNiassa + $Recuperadocabodelgado + $Recuperadonampula + $Recuperadotete + $Recuperadozambezia +
+    $Recuperadomanica +$Possesetivomanica + $Recuperadobeira + $Recuperadogaza + $Recuperadoprovincia+ $Recuperadoinhambane + $Recuperadocidade;
 // Total de possetivo
-$Totalpossetivo  = $PossesetivoNiassa['niassa'] + $Possesetivcabodelgado['cabodelgado'] + $Possesetivonampula['nampula1'] + $Possesetivotete['tete1'] + $Possesetivozambezia['zambezia1'] +
-    $Possesetivomanica['manica1'] + $Possesetivobeira['total'] + $Possesetivogaza['gaza1'] + $Possesetivoprovincia['provincia1'] + $Possesetivoinhambane['totalidade1'] + $Possesetivocidade['ciademaputo1'];
+    $Totalpossetivo  = $PossesetivoNiassa + $Possesetivcabodelgado + $Possesetivonampula + $Possesetivotete + $Possesetivozambezia +
+    $Possesetivomanica + $Possesetivobeira + $Possesetivogaza + $Possesetivoprovincia+ $Possesetivoinhambane + $Possesetivocidade;
