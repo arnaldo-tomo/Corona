@@ -26,15 +26,27 @@
 <body onload="relogio()">
 
     <script>
-    setTimeout(function() {
-        $.ajax({
-            url: "/getnewdata",
-            cache: false,
-        }).done(function(html) {
-            $('#data-container ).html(html);
-            });)
-    }, 5000);
+    // Utilizando uma função autoexecutável para evitar conflitos com outras bibliotecas
+    (function($) {
+        // Função para atualizar os dados
+        function atualizarDados() {
+            $.ajax({
+                url: "/getnewdata",
+                cache: false,
+            }).done(function(html) {
+                $('#data-container').html(html);
+            });
+        }
+
+        // Iniciar a atualização automática após o carregamento da página
+        $(document).ready(function() {
+            // Utilizando setInterval em vez de setTimeout para atualizar a cada 5 segundos
+            setInterval(atualizarDados, 5000);
+        });
+
+    })(jQuery); // Certifique-se de que o jQuery está corretamente carregado
     </script>
+
 
 
 
@@ -730,48 +742,40 @@
                     </div>
                 </div>
             </div>
+            <div class="container">
+                <footer class="footer">
+                    <div class="footer-wrap">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright ©
+                                2020 -
+                                <?php $ano = date('Y');
+                                                echo $ano; ?> <a href="http://arnaldotomo.epizy.com/"
+                                    target="_blank">http://arnaldotomo.epizy.com </a> </span>
+                            <!-- <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Podes
+                                                reutiliar os
+                                                codigos desse projeto para quais quer fins </a> templates</span>-->
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
     </div>
 </body>
 
-<div class="container">
-    <footer class="footer">
-        <div class="footer-wrap">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright ©
-                    2020 - <?php $ano = date('Y');  echo $ano; ?> <a href="http://arnaldotomo.epizy.com/"
-                        target="_blank">http://arnaldotomo.epizy.com
-                    </a> </span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Podes
-                    reutiliar os
-                    codigos desse projeto para quais quer fins </a> templates</span>
-            </div>
-        </div>
-    </footer>
-</div>
-<!-- container-scroller -->
-<!-- base:js -->
-<script src="../vendors/base/vendor.bundle.base.js"></script>
-<!-- endinject -->
 
-<!-- Plugin js for this page-->
-<!-- End plugin js for this page-->
-<!-- inject:js -->
+<script src="../vendors/base/vendor.bundle.base.js"></script>
+
 <script src="../js/template.js"></script>
-<!-- endinject -->
-<!-- plugin js for this page -->
-<!-- End plugin js for this page -->
+
 <script src="../vendors/chart.js/Chart.min.js"></script>
 <script src="../vendors/progressbar.js/progressbar.min.js"></script>
 <script src="../vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
 <script src="../vendors/justgage/raphael-2.1.4.min.js"></script>
 <script src="../vendors/justgage/justgage.js"></script>
 <script src="../js/jquery.cookie.js" type="text/javascript"></script>
-<!-- Custom js for this page-->
 <script src="../js/dashboard.js"></script>
 <script src="js/time.js"></script>
 
-<!-- End custom js for this page-->
 
 <!-- DataTables  & Plugins -->
 <script src="../vendors/tabelas/datatables/jquery.dataTables.min.js"></script>
