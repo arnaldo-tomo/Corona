@@ -26,19 +26,18 @@
 <body onload="relogio()">
 
     <script>
-        setTimeout(function() {
-            $.ajax({
-                url: "/getnewdata",
-                cache: false,
-            }).done(function(html) {
-                $('#data-container ).html(html);
-                });)
-        }, 5000);
+    setTimeout(function() {
+        $.ajax({
+            url: "/getnewdata",
+            cache: false,
+        }).done(function(html) {
+            $('#data-container ).html(html);
+            });)
+    }, 5000);
     </script>
 
 
 
-    <!-- partial:partials/_horizontal-navbar.html -->
     <div class="horizontal-menu">
         <nav class="bottom-navbar">
             <div class="container">
@@ -119,7 +118,8 @@
                                 </div>
                                 <form method="POST" action="covid19pdf.php">
                                     <div class="pe-1 mb-3 mb-xl-0">
-                                        <button type="submit" name="PDF" class="btn btn-outline-inverse-info btn-icon-text">
+                                        <button type="submit" name="PDF"
+                                            class="btn btn-outline-inverse-info btn-icon-text">
                                             Arquivo PDF
                                             <i class="mdi mdi-file-pdf btn-icon-append"></i>
                                         </button>
@@ -137,60 +137,85 @@
                                         <h4 class="card-title mb-2">Selecine a provincia para tewr acesso aos dadaos da
                                             Covid19</h4>
                                         <div class="dropdown">
-                                            <a href="#" class="text-success btn btn-link  px-1"><i class="mdi mdi-refresh"></i></a>
-                                            <a href="#" class="text-success btn btn-link px-1 dropdown-toggle dropdown-arrow-none" data-bs-toggle="dropdown" id="settingsDropdownsales">
+                                            <a href="#" class="text-success btn btn-link  px-1"><i
+                                                    class="mdi mdi-refresh"></i></a>
+                                            <a href="#"
+                                                class="text-success btn btn-link px-1 dropdown-toggle dropdown-arrow-none"
+                                                data-bs-toggle="dropdown" id="settingsDropdownsales">
                                                 <i class="mdi mdi-dots-horizontal"></i></a>
                                         </div>
                                     </div>
                                     <div>
                                         <ul class="nav nav-tabs tab-no-active-fill" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link active ps-2 pe-2" id="niassa" data-bs-toggle="tab" href="#revenue-for-last-month" role="tab" aria-controls="revenue-for-last-month" aria-selected="true">
+                                                <a class="nav-link active ps-2 pe-2" id="niassa" data-bs-toggle="tab"
+                                                    href="#revenue-for-last-month" role="tab"
+                                                    aria-controls="revenue-for-last-month" aria-selected="true">
                                                     Niassa</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2" id="cabodelgado" data-bs-toggle="tab" href="#server-loading" role="tab" aria-controls="server-loading" aria-selected="false">
+                                                <a class="nav-link ps-2 pe-2" id="cabodelgado" data-bs-toggle="tab"
+                                                    href="#server-loading" role="tab" aria-controls="server-loading"
+                                                    aria-selected="false">
                                                     Cabo delgado</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2" id="nampula" data-bs-toggle="tab" href="#data-managed" role="tab" aria-controls="data-managed" aria-selected="false">
+                                                <a class="nav-link ps-2 pe-2" id="nampula" data-bs-toggle="tab"
+                                                    href="#data-managed" role="tab" aria-controls="data-managed"
+                                                    aria-selected="false">
                                                     Nampula</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2" id="tete" data-bs-toggle="tab" href="#sales-by-traffic" role="tab" aria-controls="sales-by-traffic" aria-selected="false">
+                                                <a class="nav-link ps-2 pe-2" id="tete" data-bs-toggle="tab"
+                                                    href="#sales-by-traffic" role="tab" aria-controls="sales-by-traffic"
+                                                    aria-selected="false">
                                                     Tete</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2" id="IDzambezia" data-bs-toggle="tab" href="#zambezia" role="tab" aria-controls="zambezia" aria-selected="false">
+                                                <a class="nav-link ps-2 pe-2" id="IDzambezia" data-bs-toggle="tab"
+                                                    href="#zambezia" role="tab" aria-controls="zambezia"
+                                                    aria-selected="false">
                                                     Zambezia</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2" id="IDmanica" data-bs-toggle="tab" href="#manica" role="tab" aria-controls="manica" aria-selected="false">
+                                                <a class="nav-link ps-2 pe-2" id="IDmanica" data-bs-toggle="tab"
+                                                    href="#manica" role="tab" aria-controls="manica"
+                                                    aria-selected="false">
                                                     Manica</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2" id="IDsofala" data-bs-toggle="tab" href="#sofala" role="tab" aria-controls="sofala" aria-selected="false">
+                                                <a class="nav-link ps-2 pe-2" id="IDsofala" data-bs-toggle="tab"
+                                                    href="#sofala" role="tab" aria-controls="sofala"
+                                                    aria-selected="false">
                                                     Sofala</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2" id="IDinhambane" data-bs-toggle="tab" href="#inhambane" role="tab" aria-controls="inhambane" aria-selected="false">
+                                                <a class="nav-link ps-2 pe-2" id="IDinhambane" data-bs-toggle="tab"
+                                                    href="#inhambane" role="tab" aria-controls="inhambane"
+                                                    aria-selected="false">
                                                     Inhambane</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2" id="IDgaza" data-bs-toggle="tab" href="#gaza" role="tab" aria-controls="gaza" aria-selected="false">
+                                                <a class="nav-link ps-2 pe-2" id="IDgaza" data-bs-toggle="tab"
+                                                    href="#gaza" role="tab" aria-controls="gaza" aria-selected="false">
                                                     Gaza</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2" id="IDmatola" data-bs-toggle="tab" href="#matola" role="tab" aria-controls="matola" aria-selected="false">
+                                                <a class="nav-link ps-2 pe-2" id="IDmatola" data-bs-toggle="tab"
+                                                    href="#matola" role="tab" aria-controls="matola"
+                                                    aria-selected="false">
                                                     Matola</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link ps-2 pe-2" id="IDmaputo" data-bs-toggle="tab" href="#maputo" role="tab" aria-controls="maputo" aria-selected="false">
+                                                <a class="nav-link ps-2 pe-2" id="IDmaputo" data-bs-toggle="tab"
+                                                    href="#maputo" role="tab" aria-controls="maputo"
+                                                    aria-selected="false">
                                                     Maputo</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content tab-no-active-fill-tab-content">
-                                            <div class="tab-pane fade show active" id="revenue-for-last-month" role="tabpanel" aria-labelledby="Niassa">
+                                            <div class="tab-pane fade show active" id="revenue-for-last-month"
+                                                role="tabpanel" aria-labelledby="Niassa">
 
                                                 <table id="example1" class="table table-striped">
                                                     <thead>
@@ -210,16 +235,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `niassa` ORDER BY codigo  ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -236,7 +261,8 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                            <div class="tab-pane fade" id="server-loading" role="tabpanel" aria-labelledby="cabodelgado">
+                                            <div class="tab-pane fade" id="server-loading" role="tabpanel"
+                                                aria-labelledby="cabodelgado">
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -255,16 +281,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `tete` ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -282,7 +308,8 @@
                                                 </table>
 
                                             </div>
-                                            <div class="tab-pane fade" id="data-managed" role="tabpanel" aria-labelledby="nampula">
+                                            <div class="tab-pane fade" id="data-managed" role="tabpanel"
+                                                aria-labelledby="nampula">
                                                 <table class="table table-striped">
                                                     <thead>
                                                         <tr>
@@ -301,16 +328,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `nampula` ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -327,7 +354,8 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                            <div class="tab-pane fade" id="sales-by-traffic" role="tabpanel" aria-labelledby="tete">
+                                            <div class="tab-pane fade" id="sales-by-traffic" role="tabpanel"
+                                                aria-labelledby="tete">
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -346,16 +374,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `tete` ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -372,7 +400,8 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                            <div class="tab-pane fade" id="zambezia" role="tabpanel" aria-labelledby="IDzambezia">
+                                            <div class="tab-pane fade" id="zambezia" role="tabpanel"
+                                                aria-labelledby="IDzambezia">
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -391,16 +420,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `zambezia` ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -417,7 +446,8 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                            <div class="tab-pane fade" id="manica" role="tabpanel" aria-labelledby="IDmanica">
+                                            <div class="tab-pane fade" id="manica" role="tabpanel"
+                                                aria-labelledby="IDmanica">
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -436,16 +466,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `manica` ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -462,7 +492,8 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                            <div class="tab-pane fade" id="sofala" role="tabpanel" aria-labelledby="IDsofala">
+                                            <div class="tab-pane fade" id="sofala" role="tabpanel"
+                                                aria-labelledby="IDsofala">
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -481,16 +512,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `beira` ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -507,7 +538,8 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                            <div class="tab-pane fade" id="inhambane" role="tabpanel" aria-labelledby="IDinhambane">
+                                            <div class="tab-pane fade" id="inhambane" role="tabpanel"
+                                                aria-labelledby="IDinhambane">
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -526,16 +558,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `inhambane` ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -552,7 +584,8 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                            <div class="tab-pane fade" id="gaza" role="tabpanel" aria-labelledby="IDgaza">
+                                            <div class="tab-pane fade" id="gaza" role="tabpanel"
+                                                aria-labelledby="IDgaza">
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -571,16 +604,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `gaza` ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -597,7 +630,8 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                            <div class="tab-pane fade" id="matola" role="tabpanel" aria-labelledby="IDmatola">
+                                            <div class="tab-pane fade" id="matola" role="tabpanel"
+                                                aria-labelledby="IDmatola">
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -616,16 +650,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `provinciamaputo` ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -642,7 +676,8 @@
                                                     </tfoot>
                                                 </table>
                                             </div>
-                                            <div class="tab-pane fade" id="maputo" role="tabpanel" aria-labelledby="IDmaputo">
+                                            <div class="tab-pane fade" id="maputo" role="tabpanel"
+                                                aria-labelledby="IDmaputo">
                                                 <table id="example" class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr>
@@ -661,16 +696,16 @@
                                                             $tabela = mysqli_query($conexao, "SELECT * FROM `cidademaputo` ");
                                                             while ($array = mysqli_fetch_array($tabela)) {
                                                             ?>
-                                                                <td><?= $array['3'] + $array['4'] ?></td>
-                                                                <td><?= $array['1'] ?></td>
-                                                                <td><?= $array['2'] ?></td>
-                                                                <td><?= $array['3'] ?></td>
-                                                                <td><?= $array['4'] ?></td>
-                                                                <td><?= $array['5'] ?></td>
-                                                                <td><?= $array['6'] ?></td>
+                                                            <td><?= $array['3'] + $array['4'] ?></td>
+                                                            <td><?= $array['1'] ?></td>
+                                                            <td><?= $array['2'] ?></td>
+                                                            <td><?= $array['3'] ?></td>
+                                                            <td><?= $array['4'] ?></td>
+                                                            <td><?= $array['5'] ?></td>
+                                                            <td><?= $array['6'] ?></td>
 
                                                         </tr>
-                                                    <?php
+                                                        <?php
                                                             }
                                                     ?>
                                                     </tbody>
@@ -698,14 +733,15 @@
         </div>
     </div>
 </body>
+
 <div class="container">
     <footer class="footer">
         <div class="footer-wrap">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright ©
-                    2020 -
-                    <?php $ano = date('Y');
-                    echo $ano; ?> <a href="http://arnaldotomo.epizy.com/" target="_blank">http://arnaldotomo.epizy.com </a> </span>
+                    2020 - <?php $ano = date('Y');  echo $ano; ?> <a href="http://arnaldotomo.epizy.com/"
+                        target="_blank">http://arnaldotomo.epizy.com
+                    </a> </span>
                 <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Podes
                     reutiliar os
                     codigos desse projeto para quais quer fins </a> templates</span>
@@ -753,24 +789,25 @@
 
 <!-- End custom js for this page-->
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+$(function() {
+    $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
     });
+});
 </script>
+
 </body>
 
 </html>
